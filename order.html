@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Order Form - Babagay's Best</title>
+    <link rel="stylesheet" href="https://pyscript.net/releases/2025.8.1/core.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders:opsz,wght@10..72,100..900&family=DM+Mono:ital@1&family=Kosugi+Maru&family=Lobster+Two:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <script type="module" src="https://pyscript.net/releases/2025.8.1/core.js"></script>
+    <style>
+        body {
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+            background-image: url('https://i.pinimg.com/1200x/a0/51/4e/a0514ea3c638d0b6bf13667661350f6a.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }            
+        .navbar {
+                font-family: 'Lobster Two', cursive;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                background-color: #546c49;
+                padding: 0 32px;
+                height: 56px;
+                border-radius: 10px;
+                margin: 0 auto 24px auto;
+                max-width: 900px;
+                box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+            }
+            .navbar-brand {
+                font-family: 'Lobster Two', cursive;
+                color: #fff;
+                font-size: 1.5em;
+                font-weight: bold;
+                letter-spacing: 1px;
+                text-decoration: none;
+            }
+            .navbar-links {
+                display: flex;
+                gap: 32px;
+            }
+            .navbar-links a {
+                color: #fff;
+                text-decoration: none;
+                font-size: 1.1em;
+                font-weight: 500;
+                transition: color 0.2s;
+            }
+            .navbar-links a:hover {
+                color: #b6e0fe;
+            }
+        h1 {
+            font-family: 'Lobster Two', cursive;
+            color: #ffffff;
+            margin-top: 8px;
+            margin-bottom: 4px;
+        }
+        h3 {
+            color: #546c49;
+            margin-top: 8px;
+            margin-bottom: 4px;
+        }
+        h4 {
+            color: black;
+            margin-top: 8px;
+            margin-bottom: 4px;
+        }
+        h5 {
+            color: #ffffff;
+            margin-top: 8px;
+            margin-bottom: 4px;
+            font-size: 15px;
+        }
+        .container1 {
+            background-color: #546c49;
+            padding: 15px;
+            border-radius: 9px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 600px;
+            max-width: 600px;
+            margin: 0 auto 24px auto;
+            text-align: center;
+        }
+        .form-flex {
+            display: flex;
+            gap: 24px;
+            justify-content: center;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            margin-bottom: 24px;
+        }
+        .form-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 10px; /* Optional spacing between containers */
+            flex-wrap: wrap; /* Allows wrapping on smaller screens */
+        }
+        .container2, .container3 {
+            min-width: 300px; /* Ensures responsiveness */
+            background-color: #ffffff;
+            padding: 20px 18px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            min-width: 300px;
+            max-width: 420px;
+            height: auto;
+            flex: 1 1 320px;
+            margin-bottom: 0;
+        }
+        .container4 {
+            margin-top: 16px;
+            margin-bottom: 24px;
+        }
+        .order-list {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            margin-bottom: 18px;
+        }
+        .order-item-row {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 12px;
+        }
+        .order-item-row input[type="checkbox"] {
+            margin-right: 10px;
+            transform: scale(1.2);
+        }
+        .order-item-row label {
+            min-width: 130px;
+            font-weight: 500;
+        }
+        .order-price {
+            min-width: 90px;
+            text-align: left;
+            font-weight: 500;
+            color: #546c49;
+        }
+        button {
+            background-color: #546c49;
+            color: #fff;
+            border: none;
+            border-radius: 20px;
+            padding: 12px 32px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.2s;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            margin: 8px 0;
+        }
+        button:hover {
+            background-color: #6e8b5b;
+            transform: translateY(-2px) scale(1.04);
+        }
+        #output, #output2 {
+            min-height: 40px;
+            background: #f8fff4;
+            border: 2px solid #546c49;
+            border-radius: 10px;
+            margin: 0 auto 16px auto;
+            padding: 12px;
+            width: 80%;
+            box-sizing: border-box;
+            font-size: 1.1rem;
+            color: #2d3b23;
+            transition: background 0.2s;
+        }
+        input[type="text"], input[type="number"] {
+            width: 100%;
+            padding: 4px;
+            margin: 2px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .order-form-header {
+            display: none;
+        }
+        @media (max-width: 900px) {
+            .form-flex {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 12px;
+            }
+            .container2, .container3 {
+                min-width: 0;
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+            <span class="navbar-brand">Babagay's Best</span>
+            <div class="navbar-links">
+                <a href="index.html">Home</a>
+                <a href="order.html">Order Form</a>
+                <a href="contact.html">Contact Us</a>
+            </div>
+        </nav>
+
+    <div class="container1">
+        <h1>Babagay's Best</h1>
+        <h5>Owner: Vic Gorom</h5>
+        <h5>Est. 2024</h5>
+    </div>
+
+    <center>
+        <div class="form-wrapper">
+            <div class="container2">
+                <h3><b>Order Form</b></h3>
+                <br>
+                <form id="order_form">
+                    <div class="order-list">
+                        <div class="order-item-row" style="justify-content: space-between;">
+                            <div style="display: flex; align-items: center;">
+                                <input type="checkbox" id="pansitbato_cb" name="product" value="pansitbato">
+                                <label for="pansitbato_cb" style="margin-left: 10px;">Pansit Bato</label>
+                            </div>
+                            <span class="order-price" style="margin-left: 30px; min-width: 80px; text-align: center;">₱159.00</span>
+                            <input id="pansitbato_qty" type="number" min="0" max="10" value="0" style="width:60px; text-align: center; margin-left: 30px;" required>
+                        </div>
+                        <div class="order-item-row" style="justify-content: space-between;">
+                            <div style="display: flex; align-items: center;">
+                                <input type="checkbox" id="bicolexpress_cb" name="product" value="bicolexpress">
+                                <label for="bicolexpress_cb" style="margin-left: 10px;">Bicol Express</label>
+                            </div>
+                            <span class="order-price" style="margin-left: 30px; min-width: 80px; text-align: center;">₱149.00</span>
+                            <input id="bicolexpress_qty" type="number" min="0" max="10" value="0" style="width:60px; text-align: center; margin-left: 30px;" required>
+                        </div>
+                        <div class="order-item-row" style="justify-content: space-between;">
+                            <div style="display: flex; align-items: center;">
+                                <input type="checkbox" id="tinuktok_cb" name="product" value="tinuktok">
+                                <label for="tinuktok_cb" style="margin-left: 10px;">Tinuktok</label>
+                            </div>
+                            <span class="order-price" style="margin-left: 30px; min-width: 80px; text-align: center;">₱139.00</span>
+                            <input id="tinuktok_qty" type="number" min="0" max="10" value="0" style="width:60px; text-align: center; margin-left: 30px;" required>
+                        </div>
+                        <div class="order-item-row" style="justify-content: space-between;">
+                            <div style="display: flex; align-items: center;">
+                                <input type="checkbox" id="kalingking_cb" name="product" value="kalingking">
+                                <label for="kalingking_cb" style="margin-left: 10px;">Kalingking</label>
+                            </div>
+                            <span class="order-price" style="margin-left: 30px; min-width: 80px; text-align: center;">₱99.00</span>
+                            <input id="kalingking_qty" type="number" min="0" max="10" value="0" style="width:60px; text-align: center; margin-left: 30px;" required>
+                        </div>
+                        <div class="order-item-row" style="justify-content: space-between;">
+                            <div style="display: flex; align-items: center;">
+                                <input type="checkbox" id="pinakru_cb" name="product" value="pinakru">
+                                <label for="pinakru_cb" style="margin-left: 10px;">Pinakru</label>
+                            </div>
+                            <span class="order-price" style="margin-left: 30px; min-width: 80px; text-align: center;">₱99.00</span>
+                            <input id="pinakru_qty" type="number" min="0" max="10" value="0" style="width:60px; text-align: center; margin-left: 30px;" required>
+                        </div>
+                    </div>
+                    <div style="text-align: center; margin-top: 20px;">
+                        <label for="delivery_cb" style="margin-right: 10px;"><b>Delivery?</b></label>
+                        <input type="checkbox" id="delivery_cb" name="delivery" value="yes">
+                    </div>
+
+                    <div style="text-align: center;">
+                        <button py-click="calculate_total" type="button">Calculate Total</button>
+                    </div>
+                    <div id="output" style="text-align: center; font-weight: bold;"></div>
+                </form>
+        </div>
+
+            <br><br>
+
+            <div class="container3">
+                <h3 style="text-align: center;"><b>Customer Information</b></h3>
+                    <br>
+                    <h4>First Name: <br><input type="text" id="name" style="text-align: center;" required/></h4>
+                    <h4>Last Name: <br><input type="text" id="lastname" style="text-align: center;" required/></h4>
+                    <h4>Email: <br><input type="text" id="email" style="text-align: center;" required/></h4>
+                    <h4>Contact No.: <br><input type="text" id="contact" style="text-align: center;" required/></h4>
+                    <div style="text-align: center;">
+                        <button py-click="confirm_order" type="button">Confirm</button>
+                    </div>
+            <div id="output2" style="text-align: center; font-weight: bold;"></div>
+            </div>
+        </div>
+        </div>
+
+        <div class="container4">
+            <button py-click="clear_content" style="display: block; margin: 0 auto;" type="button">Clear</button>
+        </div>
+    </center>
+
+    <script type="py" src="order.py"></script>
+</body>
+</html>
