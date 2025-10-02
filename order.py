@@ -20,7 +20,7 @@ def calculate_total(event=None): # Calculate total price based on selected produ
     total = 0
     checked = 0
 
-    for checkbox_id, data in products.items():
+    for checkbox_id, data in products.items(): # to check if there are any inputs added in the given fields in the html file
         checkbox = document.getElementById(checkbox_id)
         qty_input = document.getElementById(data["qty_id"])
         quantity = int(qty_input.value) if qty_input.value else 0
@@ -66,7 +66,7 @@ def confirm_order(event=None): # Confirm order and display details
     selected = []
     total = 0
 
-    for prod_id, data in prices.items():
+    for prod_id, data in prices.items(): # gives the total amount of price to be paid based on how many a customer wants from 1 product
         checkbox = document.getElementById(prod_id)
         qty_input = document.getElementById(data["qty_id"])
         quantity = int(qty_input.value) if qty_input.value else 0
@@ -83,7 +83,7 @@ def confirm_order(event=None): # Confirm order and display details
     output2 = document.getElementById("output2")
     container3 = document.querySelector(".container3")
 
-    if not customer_name or not lastname or not email or not contact:
+    if not customer_name or not lastname or not email or not contact: # to make sure that all the fields has an input in them before confirming
         output2.innerText = "Please fill in all customer details before confirming."
         return
 
@@ -95,13 +95,13 @@ def confirm_order(event=None): # Confirm order and display details
     delivery_checkbox = document.getElementById("delivery_cb")
     delivery = delivery_checkbox.checked if delivery_checkbox else False
 
-    if delivery:
+    if delivery: # adds 50 pesos to the price if the customer wants to avail for delivery
         total += 50
         delivery_note = "Delivery: Yes (₱50.00 added)"
     else:
         delivery_note = "Delivery: No"
 
-    message = (
+    message = ( # displays message after confirming the details of the order
         f"Order confirmed for {customer_name} {lastname}!\n"
         f"Products: {', '.join(selected)}\n"
         f"{delivery_note}\n"
@@ -113,7 +113,7 @@ def confirm_order(event=None): # Confirm order and display details
     container3.classList.add("expanded")
 
 
-def clear_content(event=None): # Clear all inputs and outputs
+def clear_content(event=None): # Clear all inputs and outputs from both containers
     document.getElementById("output").innerText = ""
     document.getElementById("output2").innerText = ""
     document.getElementById("name").value = ""
@@ -121,4 +121,5 @@ def clear_content(event=None): # Clear all inputs and outputs
     document.getElementById("email").value = ""
     document.getElementById("contact").value = ""
     for prod_id in ["pansitbato_cb", "bicolexpress_cb", "tinuktok_cb", "kalingking_cb", "pinakru_cb"]:
+
         document.getElementById(prod_id).checked = False
