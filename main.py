@@ -1,6 +1,6 @@
 from pyscript import display
 
-# the name of the restaurant, and the data type is string. The Babagay is from my middle name "B."
+# the name of the restaurant, and the data type is string. The Babagay is from my middle name, "B."
 restaurant_name = "Babagay's Best"
 
 # the name of the restaurant owner, and the data type is string
@@ -18,7 +18,7 @@ has_delivery = True
 # the list of product names, and the data type is list
 product_names = ["Tinuktok", "Pansit Bato", "Bicol Express", "Kalingking", "Pinakru"]
 
-# Open from 9 AM to 10 PM, and this data type is tuple
+# Open from 9 AM to 10 PM, and this data type is a tuple
 business_hours = (9, 22)
 
 # dictionary of menu items and their prices
@@ -27,5 +27,6 @@ menu_prices = {"Tinuktok": 139, "Pansit Bato": 159, "Bicol Express": 149, "Kalin
 # a set of common allergens present in the products
 common_allergens = {"potatoes", "coconut milk", "seafood"}
 
-# this is 12% tax rate, and the data type is float
+# this is a 12% tax rate, and the data type is float
 tax_rate = 0.12
+
